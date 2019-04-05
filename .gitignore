@@ -100,7 +100,8 @@ tutorials/embedding/questions-words.txt
 
 samples/outreach/blogs/segmentation_blogpost/carvana-image-masking-challenge/
 #Juan Luis
-#research/object_detection/data
+research/object_detection/data
+!research/object_detection/data/dataset
 research/object_detection/models/model/
 *.pbtxt
 *.tfrecord
