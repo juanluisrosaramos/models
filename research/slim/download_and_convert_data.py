@@ -39,6 +39,8 @@ import tensorflow as tf
 from datasets import download_and_convert_cifar10
 from datasets import download_and_convert_flowers
 from datasets import download_and_convert_mnist
+from datasets import download_and_convert_smiletronix
+
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -59,8 +61,8 @@ def main(_):
   if not FLAGS.dataset_dir:
     raise ValueError('You must supply the dataset directory with --dataset_dir')
 
-  if FLAGS.dataset_name == 'cifar10':
-    download_and_convert_cifar10.run(FLAGS.dataset_dir)
+  if FLAGS.dataset_name == 'smiletronix':
+    download_and_convert_smiletronix.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'flowers':
     download_and_convert_flowers.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'mnist':
