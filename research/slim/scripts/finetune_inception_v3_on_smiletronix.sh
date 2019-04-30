@@ -25,13 +25,13 @@
 set -e
 
 # Where the pre-trained InceptionV3 checkpoint is saved to.
-PRETRAINED_CHECKPOINT_DIR=model/tmp/checkpoints/
+PRETRAINED_CHECKPOINT_DIR=model/tmp/checkpoints1
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
-TRAIN_DIR=model/tmp/logs_f_tuning/
+TRAIN_DIR=model/tmp/logs_f_tuning
 
 # Where the dataset is saved to.
-DATASET_DIR=dataset/
+DATASET_DIR=dataset
 
 # Fine-tune only the new layers for 1000 steps.
 python train_image_classifier.py \
