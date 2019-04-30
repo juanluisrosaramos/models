@@ -24,14 +24,13 @@
 # ./slim/scripts/finetune_resnet_v1_50_on_flowers.sh
 set -e
 
-# Where the pre-trained ResNetV1-50 checkpoint is saved to.
-PRETRAINED_CHECKPOINT_DIR=/tmp/checkpoints
+PRETRAINED_CHECKPOINT_DIR=model/tmp/checkpoints
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
-TRAIN_DIR=/tmp/flowers-models/resnet_v1_50
+TRAIN_DIR=model/tmp/logs2classesResnet
 
 # Where the dataset is saved to.
-DATASET_DIR=/tmp/flowers
+DATASET_DIR=dataset/2classes
 
 # Download the pre-trained checkpoint.
 if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then
@@ -44,10 +43,6 @@ if [ ! -f ${PRETRAINED_CHECKPOINT_DIR}/resnet_v1_50.ckpt ]; then
   rm resnet_v1_50_2016_08_28.tar.gz
 fi
 
-# Download the dataset
-python download_and_convert_data.py \
-  --dataset_name=flowers \
-  --dataset_dir=${DATASET_DIR}
 
 # Fine-tune only the new layers for 3000 steps.
 python train_image_classifier.py \
@@ -59,7 +54,7 @@ python train_image_classifier.py \
   --checkpoint_path=${PRETRAINED_CHECKPOINT_DIR}/resnet_v1_50.ckpt \
   --checkpoint_exclude_scopes=resnet_v1_50/logits \
   --trainable_scopes=resnet_v1_50/logits \
-  --max_number_of_steps=3000 \
+  --max_number_of_steps=10000 \
   --batch_size=32 \
   --learning_rate=0.01 \
   --save_interval_secs=60 \
@@ -72,7 +67,7 @@ python train_image_classifier.py \
 python eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR} \
   --eval_dir=${TRAIN_DIR} \
-  --dataset_name=flowers \
+  --dataset_name=smiletronix \
   --dataset_split_name=validation \
   --dataset_dir=${DATASET_DIR} \
   --model_name=resnet_v1_50
@@ -80,12 +75,12 @@ python eval_image_classifier.py \
 # Fine-tune all the new layers for 1000 steps.
 python train_image_classifier.py \
   --train_dir=${TRAIN_DIR}/all \
-  --dataset_name=flowers \
+  --dataset_name=smiletronix \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --checkpoint_path=${TRAIN_DIR} \
   --model_name=resnet_v1_50 \
-  --max_number_of_steps=1000 \
+  --max_number_of_steps=5000 \
   --batch_size=32 \
   --learning_rate=0.001 \
   --save_interval_secs=60 \
@@ -98,7 +93,7 @@ python train_image_classifier.py \
 python eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR}/all \
   --eval_dir=${TRAIN_DIR}/all \
-  --dataset_name=flowers \
+  --dataset_name=smiletronix \
   --dataset_split_name=validation \
   --dataset_dir=${DATASET_DIR} \
   --model_name=resnet_v1_50
