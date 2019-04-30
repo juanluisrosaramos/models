@@ -40,13 +40,13 @@ from datasets import dataset_utils
 #_DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 700
+_NUM_VALIDATION = 3000
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
 
 # The number of shards per dataset split.
-_NUM_SHARDS = 5
+_NUM_SHARDS = 2
 
 
 class ImageReader(object):
@@ -82,6 +82,7 @@ def _get_filenames_and_classes(dataset_dir):
     subdirectories, representing class names.
   """
   flower_root = os.path.join(dataset_dir, 'images')
+  flower_root = dataset_dir
   directories = []
   class_names = []
   for filename in os.listdir(flower_root):
@@ -209,5 +210,5 @@ def run(dataset_dir):
   labels_to_class_names = dict(zip(range(len(class_names)), class_names))
   dataset_utils.write_label_file(labels_to_class_names, dataset_dir)
 
-  _clean_up_temporary_files(dataset_dir)
+  #_clean_up_temporary_files(dataset_dir)
   print('\nFinished converting the smiletronix dataset!')
