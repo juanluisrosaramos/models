@@ -25,7 +25,7 @@
 set -e
 
 # Where the pre-trained InceptionV3 checkpoint is saved to.
-PRETRAINED_CHECKPOINT_DIR=model/tmp/checkpoints1
+PRETRAINED_CHECKPOINT_DIR=model/tmp/checkpoints
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
 TRAIN_DIR=model/tmp/logs_f_tuning
