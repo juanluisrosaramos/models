@@ -53,7 +53,7 @@ def _get_filenames_and_classes(dataset_dir):
     A list of image file paths, relative to `dataset_dir` and the list of
     subdirectories, representing class names.
   """
-  flower_root = os.path.join(dataset_dir, 'images/classification_caries')
+  flower_root = os.path.join(dataset_dir, 'images/caries_noAugmentation')
   #flower_root = dataset_dir
   print('DATASET_DIR',dataset_dir)
   directories = []
