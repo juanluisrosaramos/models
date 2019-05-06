@@ -27,10 +27,10 @@ set -e
 PRETRAINED_CHECKPOINT_DIR=model/tmp/checkpoints
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
-TRAIN_DIR=model/tmp/logs2classesResnet
+TRAIN_DIR=model/tmp/caries_augmented
 
 # Where the dataset is saved to.
-DATASET_DIR=dataset/2classes
+DATASET_DIR=dataset/caries_augmented
 
 # Download the pre-trained checkpoint.
 if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then

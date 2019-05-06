@@ -1,46 +1,18 @@
-# Copyright 2016 The TensorFlow Authors. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
-r"""Downloads and converts Flowers data to TFRecords of TF-Example protos.
-
-This module downloads the Flowers data, uncompresses it, reads the files
-that make up the Flowers data and creates two TFRecord datasets: one for train
-and one for test. Each TFRecord dataset is comprised of a set of TF-Example
-protocol buffers, each of which contain a single image and label.
-
-The script should take about a minute to run.
-
-"""
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
 import math
 import os
 import random
 import sys
-
 import tensorflow as tf
-
 from datasets import dataset_utils
 
 # The URL where the Flowers data can be downloaded.
 #_DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 3000
+_NUM_VALIDATION = 2500
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
@@ -81,8 +53,9 @@ def _get_filenames_and_classes(dataset_dir):
     A list of image file paths, relative to `dataset_dir` and the list of
     subdirectories, representing class names.
   """
-  flower_root = os.path.join(dataset_dir, 'images')
-  flower_root = dataset_dir
+  flower_root = os.path.join(dataset_dir, 'images/classification_caries')
+  #flower_root = dataset_dir
+  print('DATASET_DIR',dataset_dir)
   directories = []
   class_names = []
   for filename in os.listdir(flower_root):
@@ -183,6 +156,8 @@ def run(dataset_dir):
   Args:
     dataset_dir: The dataset directory where the dataset is stored.
   """
+  print('DATASET_DIR',dataset_dir)
+
   if not tf.gfile.Exists(dataset_dir):
     tf.gfile.MakeDirs(dataset_dir)
 
