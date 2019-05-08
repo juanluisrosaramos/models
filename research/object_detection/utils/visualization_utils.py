@@ -147,6 +147,18 @@ def draw_bounding_box_on_image(image,
   if use_normalized_coordinates:
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
                                   ymin * im_height, ymax * im_height)   
+        #cropS detections images
+    h = bottom - top
+    w = right - left
+    crop_img = image
+    #crop_img = image[top:top+h, left:left+w]
+    crop_img = image.crop((left, top, right, bottom))
+
+    #name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
+    name_img = str(uuid.uuid4()) + '.jpg'
+    crop_img.save(name_img, format='JPEG')
+    print('Tooth cropped:',name_img)
+
   else:
     (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
   draw.line([(left, top), (left, bottom), (right, bottom),
@@ -181,19 +193,6 @@ def draw_bounding_box_on_image(image,
         fill='black',
         font=font)
     text_bottom -= text_height - 2 * margin
-
-    #crop detections images
-    h = bottom - top
-    w = right - left
-    crop_img = image
-    #crop_img = image[top:top+h, left:left+w]
-    crop_img = image.crop((left, top, right, bottom))
-
-    #name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
-    name_img = str(uuid.uuid4()) + '.jpg'
-    crop_img.save(name_img, format='JPEG')
-    print('Tooth cropped:',name_img)
-
 
 def draw_bounding_boxes_on_image_array(image,
                                        boxes,
