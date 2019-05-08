@@ -191,8 +191,8 @@ def draw_bounding_box_on_image(image,
 
     #name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
     name_img = str(uuid.uuid4()) + '.jpg'
-
     crop_img.save(name_img, format='JPEG')
+    print('Tooth cropped:',name_img)
 
 
 def draw_bounding_boxes_on_image_array(image,
