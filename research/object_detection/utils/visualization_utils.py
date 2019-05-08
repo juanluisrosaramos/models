@@ -142,15 +142,15 @@ def draw_bounding_box_on_image(image,
       ymin, xmin, ymax, xmax as relative to the image.  Otherwise treat
       coordinates as absolute.
   """
+  #cropS detections images
+  im_width, im_height = image.size
+
   if use_normalized_coordinates:
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
                                   ymin * im_height, ymax * im_height)       
 
   else:
     (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
-  draw.line([(left, top), (left, bottom), (right, bottom),
-             (right, top), (left, top)], width=thickness, fill=color)
-  #cropS detections images
   h = bottom - top
   w = right - left
   crop_img = image
@@ -163,8 +163,9 @@ def draw_bounding_box_on_image(image,
   print('Tooth cropped:',name_img)
 
   draw = ImageDraw.Draw(image)
-  im_width, im_height = image.size
-  
+
+  draw.line([(left, top), (left, bottom), (right, bottom),
+             (right, top), (left, top)], width=thickness, fill=color)
   try:
     font = ImageFont.truetype('arial.ttf', 24)
   except IOError:
