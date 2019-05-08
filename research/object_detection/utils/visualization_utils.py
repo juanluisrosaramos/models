@@ -12,7 +12,7 @@ import PIL.ImageFont as ImageFont
 import six
 import tensorflow as tf
 import random
-
+import uuid
 from object_detection.core import standard_fields as fields
 from object_detection.utils import shape_utils
 
