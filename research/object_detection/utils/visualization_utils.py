@@ -146,6 +146,15 @@ def draw_bounding_box_on_image(image,
   if use_normalized_coordinates:
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
                                   ymin * im_height, ymax * im_height)
+    #crop images
+    h = bottom - top
+    w = right - left
+    crop_img = image
+    crop_img = image[y:y+h, x:x+w]
+    name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
+    image.save('opera_house.png', format='PNG')
+
+
   else:
     (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
   draw.line([(left, top), (left, bottom), (right, bottom),
@@ -607,7 +616,7 @@ def visualize_boxes_and_labels_on_image_array(
     instance_boundaries=None,
     keypoints=None,
     use_normalized_coordinates=False,
-    max_boxes_to_draw=20,
+    max_boxes_to_draw=30,
     min_score_thresh=.4,
     agnostic_mode=False,
     line_thickness=2,
@@ -728,6 +737,8 @@ def visualize_boxes_and_labels_on_image_array(
           color=color,
           radius=line_thickness / 2,
           use_normalized_coordinates=use_normalized_coordinates)
+
+
 
   return image
 
