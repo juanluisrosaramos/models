@@ -145,16 +145,7 @@ def draw_bounding_box_on_image(image,
   im_width, im_height = image.size
   if use_normalized_coordinates:
     (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
-                                  ymin * im_height, ymax * im_height)
-    #crop images
-    h = bottom - top
-    w = right - left
-    crop_img = image
-    crop_img = image[top:top+h, left:left+w]
-    name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
-    image.save('opera_house.png', format='PNG')
-
-
+                                  ymin * im_height, ymax * im_height)   
   else:
     (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
   draw.line([(left, top), (left, bottom), (right, bottom),
@@ -189,6 +180,14 @@ def draw_bounding_box_on_image(image,
         fill='black',
         font=font)
     text_bottom -= text_height - 2 * margin
+
+    #crop detections images
+    h = bottom - top
+    w = right - left
+    crop_img = image
+    crop_img = image[top:top+h, left:left+w]
+    name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
+    crop_img.save(name_img, format='JPG')
 
 
 def draw_bounding_boxes_on_image_array(image,
