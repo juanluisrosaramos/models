@@ -12,7 +12,7 @@ from datasets import dataset_utils
 #_DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 2500
+_NUM_VALIDATION = 1700
 
 # Seed for repeatability.
 _RANDOM_SEED = 0

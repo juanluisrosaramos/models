@@ -1,24 +1,3 @@
-# Copyright 2017 The TensorFlow Authors. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ==============================================================================
-
-"""A set of functions that are used for visualization.
-
-These functions often receive an image, perform some visualization on the image.
-The functions do not return a value, instead they modify the image itself.
-
-"""
 import abc
 import collections
 import functools
@@ -629,9 +608,9 @@ def visualize_boxes_and_labels_on_image_array(
     keypoints=None,
     use_normalized_coordinates=False,
     max_boxes_to_draw=20,
-    min_score_thresh=.5,
+    min_score_thresh=.4,
     agnostic_mode=False,
-    line_thickness=4,
+    line_thickness=2,
     groundtruth_box_visualization_color='black',
     skip_scores=False,
     skip_labels=False):

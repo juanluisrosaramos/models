@@ -33,6 +33,10 @@ TRAIN_DIR=/tmp/flowers-models/inception_v1
 # Where the dataset is saved to.
 DATASET_DIR=/tmp/flowers
 
+if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then
+  mkdir ${PRETRAINED_CHECKPOINT_DIR}
+fi
+
 # Download the pre-trained checkpoint.
 if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then
   mkdir ${PRETRAINED_CHECKPOINT_DIR}
