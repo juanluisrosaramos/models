@@ -142,6 +142,14 @@ def draw_bounding_box_on_image(image,
       ymin, xmin, ymax, xmax as relative to the image.  Otherwise treat
       coordinates as absolute.
   """
+  if use_normalized_coordinates:
+    (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
+                                  ymin * im_height, ymax * im_height)       
+
+  else:
+    (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
+  draw.line([(left, top), (left, bottom), (right, bottom),
+             (right, top), (left, top)], width=thickness, fill=color)
   #cropS detections images
   h = bottom - top
   w = right - left
@@ -156,14 +164,7 @@ def draw_bounding_box_on_image(image,
 
   draw = ImageDraw.Draw(image)
   im_width, im_height = image.size
-  if use_normalized_coordinates:
-    (left, right, top, bottom) = (xmin * im_width, xmax * im_width,
-                                  ymin * im_height, ymax * im_height)       
-
-  else:
-    (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
-  draw.line([(left, top), (left, bottom), (right, bottom),
-             (right, top), (left, top)], width=thickness, fill=color)
+  
   try:
     font = ImageFont.truetype('arial.ttf', 24)
   except IOError:
