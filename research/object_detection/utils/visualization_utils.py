@@ -190,7 +190,8 @@ def draw_bounding_box_on_image(image,
     crop_img = image.crop((left, top, right, bottom))
 
     #name_img = 'classification/images/' + str(random.randint(1,1001)) + 'jpg'
-    name_img = 'asdasdada.jpg33'
+    name_img = str(uuid.uuid4()) + '.jpg'
+
     crop_img.save(name_img, format='JPEG')
 
 
