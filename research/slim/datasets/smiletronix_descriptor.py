@@ -11,9 +11,9 @@ slim = tf.contrib.slim
 
 _FILE_PATTERN = 'smiletronix_%s_*.tfrecord'
 
-SPLITS_TO_SIZES = {'train': 58101, 'validation': 700}
+SPLITS_TO_SIZES = {'train': 20000, 'validation': 2000}
 
-_NUM_CLASSES = 9
+_NUM_CLASSES = 7
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image': 'A color image of varying size.',

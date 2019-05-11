@@ -12,13 +12,13 @@ from datasets import dataset_utils
 #_DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 1700
+_NUM_VALIDATION = 15000
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
 
 # The number of shards per dataset split.
-_NUM_SHARDS = 2
+_NUM_SHARDS = 3
 
 
 class ImageReader(object):
@@ -53,7 +53,7 @@ def _get_filenames_and_classes(dataset_dir):
     A list of image file paths, relative to `dataset_dir` and the list of
     subdirectories, representing class names.
   """
-  flower_root = os.path.join(dataset_dir, 'images/caries_noAugmentation')
+  flower_root = os.path.join(dataset_dir, 'images/7classes_augmented')
   #flower_root = dataset_dir
   print('DATASET_DIR',dataset_dir)
   directories = []
